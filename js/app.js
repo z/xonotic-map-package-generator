@@ -2,38 +2,66 @@ $(document).ready(function() {
 
     $("#generate").click(function(e) {
         e.preventDefault();
-        imgData = "R0lGODdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=";
 
-        var zip = new JSZip();
-        zip.file("Hello.txt", "Hello World\n");
-        var img = zip.folder("images");
-        img.file("smile.gif", imgData, {base64: true});
-        var content = zip.generate({type:"blob"});
-        // see FileSaver.js
-        //saveAs(content, "example.zip");
+        // Get form data
+        var bsp, title, description, author, license, cdtrack;
 
-        var bsp, title, description, author, license;
         bsp = $("#bsp").val();
         title = $("#title").val();
         description = $("#description").val();
         author = $("#author").val();
         license = $("#license").val();
+        cdtrack = Math.floor(Math.random() * (20 - 0 + 1)) + 0;
 
-        var gametypes = [];
+
+        // Handle gametypes
+        var gametypes_arr = [];
         $("[name=gametypes]:checked").each(function() {
-            gametypes.push($(this).val());
+            gametypes_arr.push($(this).val());
         });
 
-        console.log(bsp, title, description, author, gametypes, license);
+        var gametypes = "";
+        gametypes_arr.forEach(function(value, index, array) {
+            console.log(value);
+            gametypes += "gametype " + value + "\n";
+        });
 
-        JSZipUtils.getBinaryContent('template/map.zip', function(err, data) {
-            if(err) {
-                throw err; // or handle err
-            }
 
-            var zip = new JSZip(data);
-            console.log(zip.file("maps/__mapname__.mapinfo").asText());
-        }); 
+        // Start reading in files and replacing content
+        var _mapinfo, _license;
+
+        $.when(
+
+            $.get("template/map/maps/__mapname__.mapinfo", function(data) {
+                _mapinfo = data;
+                _mapinfo = _mapinfo.replace("{{title}}", title);
+                _mapinfo = _mapinfo.replace("{{description}}", description);
+                _mapinfo = _mapinfo.replace("{{author}}", author);
+                _mapinfo = _mapinfo.replace("{{cdtrack}}", cdtrack);
+                _mapinfo = _mapinfo.replace("{{gametypes}}", gametypes);
+            }),
+
+            $.get("template/license/" + license, function(data) {
+                _license = data;
+            })
+
+        ).then(function() {
+
+            console.log(_mapinfo);
+
+            var zip = new JSZip();
+            zip.file("maps/" + bsp + ".mapinfo", _mapinfo);
+            zip.file("maps/" + bsp + ".map", "");
+            zip.file("maps/" + bsp + ".jpg", "");
+            zip.file("gfx/" + bsp + "_mini.tga", "");
+            zip.file("LICENSE", _license);
+            zip.file("README", "");
+
+            var content = zip.generate({type:"blob"});
+            // see FileSaver.js
+            saveAs(content, bsp + ".pk3");
+
+        });
 
     });
 
