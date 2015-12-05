@@ -28,18 +28,28 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Generator</h3>
+                <h3 class="panel-title">Package Creation</h3>
             </div>
             <div class="panel-body">
 
+                <h4>What is this?</h4>
+
+                <p>The following form allows you to generate a pk3 that you can use as a template for your map. These files are the minimum you'll want to have in a map package you plan to distribute. Learn more about how to create maps on the <a href="https://gitlab.com/xonotic/xonotic/wikis/home#editing" target="_blank">Xonotic Wiki</a>.</p>
+
+                <h4>What do I do with this package?</h4>
+
+                <p>A pk3 is a renamed zip file, you should extract this to a folder name "my_map.pk3dir" in your ~/.xonotic/data folder and open the .map in NetRadiant. When you're ready to test, compile the map (this will create the .bsp) which you can play in game.</p>
+
                 <form class="form-horizontal">
                 <fieldset>
+
+                <legend>Package Generator</legend>
 
                 <!-- Text input-->
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="bsp">Name (bsp)</label>  
                   <div class="col-md-4">
-                  <input id="bsp" name="bsp" type="text" placeholder="my_map_v1" class="form-control input-md" required="">
+                  <input id="bsp" name="bsp" type="text" placeholder="my_map_v1" class="form-control input-md" required="" pattern="^[a-z0-9_-]+$">
                   <span class="help-block">lowercase characters a-z, 0-9, _ and -</span>  
                   </div>
                 </div>
