@@ -1,68 +1,72 @@
 $(document).ready(function() {
 
     $("#generate").click(function(e) {
-        e.preventDefault();
 
-        // Get form data
-        var bsp, title, description, author, license, cdtrack;
+        $('form').validator().on('submit', function (e) {
+            if (e.isDefaultPrevented()) { return; }
 
-        bsp = $("#bsp").val();
-        title = $("#title").val();
-        description = $("#description").val();
-        author = $("#author").val();
-        license = $("#license").val();
-        cdtrack = Math.floor(Math.random() * (20 - 0 + 1)) + 0;
+            // Get form data
+            var bsp, title, description, author, license, cdtrack;
 
-
-        // Handle gametypes
-        var gametypes_arr = [];
-        $("[name=gametypes]:checked").each(function() {
-            gametypes_arr.push($(this).val());
-        });
-
-        var gametypes = "";
-        gametypes_arr.forEach(function(value, index, array) {
-            console.log(value);
-            gametypes += "gametype " + value + "\n";
-        });
+            bsp = $("#bsp").val();
+            title = $("#title").val();
+            description = $("#description").val();
+            author = $("#author").val();
+            license = $("#license").val();
+            cdtrack = Math.floor(Math.random() * (20 - 0 + 1)) + 0;
 
 
-        // Start reading in files and replacing content
-        var _mapinfo, _license;
+            // Handle gametypes
+            var gametypes_arr = [];
+            $("[name=gametypes]:checked").each(function() {
+                gametypes_arr.push($(this).val());
+            });
 
-        $.when(
+            var gametypes = "";
+            gametypes_arr.forEach(function(value, index, array) {
+                console.log(value);
+                gametypes += "gametype " + value + "\n";
+            });
 
-            $.get("template/map/maps/__mapname__.mapinfo", function(data) {
-                _mapinfo = data;
-                _mapinfo = _mapinfo.replace("{{title}}", title);
-                _mapinfo = _mapinfo.replace("{{description}}", description);
-                _mapinfo = _mapinfo.replace("{{author}}", author);
-                _mapinfo = _mapinfo.replace("{{cdtrack}}", cdtrack);
-                _mapinfo = _mapinfo.replace("{{gametypes}}", gametypes);
-            }),
 
-            $.get("template/license/" + license, function(data) {
-                _license = data;
-            })
+            // Start reading in files and replacing content
+            var _mapinfo, _license;
 
-        ).then(function() {
+            $.when(
 
-            console.log(_mapinfo);
+                $.get("template/map/maps/__mapname__.mapinfo", function(data) {
+                    _mapinfo = data;
+                    _mapinfo = _mapinfo.replace("{{title}}", title);
+                    _mapinfo = _mapinfo.replace("{{description}}", description);
+                    _mapinfo = _mapinfo.replace("{{author}}", author);
+                    _mapinfo = _mapinfo.replace("{{cdtrack}}", cdtrack);
+                    _mapinfo = _mapinfo.replace("{{gametypes}}", gametypes);
+                }),
 
-            var zip = new JSZip();
-            zip.file("maps/" + bsp + ".mapinfo", _mapinfo);
-            zip.file("maps/" + bsp + ".map", "");
-            zip.file("maps/" + bsp + ".jpg", "");
-            zip.file("gfx/" + bsp + "_mini.tga", "");
-            zip.file("LICENSE", _license);
-            zip.file("README", "");
+                $.get("template/license/" + license, function(data) {
+                    _license = data;
+                })
 
-            var content = zip.generate({type:"blob"});
-            // see FileSaver.js
-            saveAs(content, bsp + ".pk3");
+            ).then(function() {
 
-        });
+                console.log(_mapinfo);
 
-    });
+                var zip = new JSZip();
+                zip.file("maps/" + bsp + ".mapinfo", _mapinfo);
+                zip.file("maps/" + bsp + ".map", "");
+                zip.file("maps/" + bsp + ".jpg", "");
+                zip.file("gfx/" + bsp + "_mini.tga", "");
+                zip.file("LICENSE", _license);
+                zip.file("README", "");
+
+                var content = zip.generate({type:"blob"});
+                // see FileSaver.js
+                saveAs(content, bsp + ".pk3");
+
+            });
+
+        }); // validator
+
+    }); // generator click
 
 });
