@@ -31,7 +31,98 @@
                 <h3 class="panel-title">Generator</h3>
             </div>
             <div class="panel-body">
-                <!-- form goes here -->
+
+                <form class="form-horizontal">
+                <fieldset>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="bsp">Name (bsp)</label>  
+                  <div class="col-md-4">
+                  <input id="bsp" name="bsp" type="text" placeholder="my_map_v1" class="form-control input-md" required="">
+                  <span class="help-block">lowercase characters a-z, 0-9, _ and -</span>  
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="title">Title</label>  
+                  <div class="col-md-4">
+                  <input id="title" name="title" type="text" placeholder="My Map" class="form-control input-md" required="">
+                    
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="description">Description</label>  
+                  <div class="col-md-4">
+                  <input id="description" name="description" type="text" placeholder="A small DM map for 4-6 players" class="form-control input-md" required="">
+                    
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="author">Author</label>  
+                  <div class="col-md-4">
+                  <input id="author" name="author" type="text" placeholder="-z-" class="form-control input-md" required="">
+                    
+                  </div>
+                </div>
+
+                <!-- Multiple Checkboxes (inline) -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="gametypes">Game Types</label>
+                  <div class="col-md-4">
+                    <label class="checkbox-inline" for="gametypes-0">
+                      <input type="checkbox" name="gametypes" id="gametypes-0" value="">
+                      dm
+                    </label>
+                    <label class="checkbox-inline" for="gametypes-1">
+                      <input type="checkbox" name="gametypes" id="gametypes-1" value="">
+                      ft
+                    </label>
+                    <label class="checkbox-inline" for="gametypes-2">
+                      <input type="checkbox" name="gametypes" id="gametypes-2" value="">
+                      ka
+                    </label>
+                    <label class="checkbox-inline" for="gametypes-3">
+                      <input type="checkbox" name="gametypes" id="gametypes-3" value="">
+                      kh
+                    </label>
+                    <label class="checkbox-inline" for="gametypes-4">
+                      <input type="checkbox" name="gametypes" id="gametypes-4" value="">
+                      ctf
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="license">License</label>
+                  <div class="col-md-4">
+                    <select id="license" name="license" class="form-control">
+                      <option value="1">GPL 2.0</option>
+                      <option value="2">GPL 3.0</option>
+                      <option value="3">MIT</option>
+                      <option value="0">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="generate"></label>
+                  <div class="col-md-4">
+                    <button id="generate" name="generate" class="btn btn-primary">Generate my pk3!</button>
+                  </div>
+                </div>
+
+                </fieldset>
+                </form>
+
+
             </div><!-- .panel-body -->
         </div><!-- .panel -->
 
