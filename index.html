@@ -1,153 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Xonotic Map Package Generator</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Xonotic Map Package Generator</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
 
-    <section class="container-fluid">
+<section class="container-fluid">
 
-        <div class="page-header">
-          <h1 class="text-primary">Xonotic Map Package Generator</h1>
-          <h3 class="text-muted">Learn how to create a well-packaged map</h3>
-        </div>
+  <div class="page-header">
+    <h1 class="text-primary">Xonotic Map Package Generator</h1>
+    <h3 class="text-muted">Learn how to create a well-packaged map</h3>
+  </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Package Creation</h3>
+  <div class="panel panel-default col-md-6">
+    <div class="panel-heading">
+      <h3 class="panel-title">Package Creation</h3>
+    </div>
+    <div class="panel-body">
+
+      <h4>What is this?</h4>
+
+      <p>The following form allows you to generate a pk3 that you can use as a template for your map. These files are
+        the minimum you'll want to have in a map package you plan to distribute. Learn more about how to create maps on
+        the <a href="https://gitlab.com/xonotic/xonotic/wikis/home#editing" target="_blank">Xonotic Wiki</a>.</p>
+
+      <h4>What do I do with this package?</h4>
+
+      <p>A pk3 is a renamed zip file, you should extract this to a folder name "my_map.pk3dir" in your ~/.xonotic/data
+        folder and open the .map in NetRadiant. When you're ready to test, compile the map (this will create the .bsp)
+        which you can play in game.</p>
+
+      <form class="form-horizontal">
+        <fieldset>
+
+          <legend>Package Generator</legend>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="bsp">Name (bsp)</label>
+            <div class="col-md-4">
+              <input id="bsp" name="bsp" type="text" placeholder="my_map_v1" class="form-control input-md" required=""
+                     pattern="^[a-z0-9_-]+$">
+              <span class="help-block">lowercase characters a-z, 0-9, _ and -</span>
             </div>
-            <div class="panel-body">
+          </div>
 
-                <h4>What is this?</h4>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="title">Title</label>
+            <div class="col-md-4">
+              <input id="title" name="title" type="text" placeholder="My Map" class="form-control input-md" required="">
 
-                <p>The following form allows you to generate a pk3 that you can use as a template for your map. These files are the minimum you'll want to have in a map package you plan to distribute. Learn more about how to create maps on the <a href="https://gitlab.com/xonotic/xonotic/wikis/home#editing" target="_blank">Xonotic Wiki</a>.</p>
+            </div>
+          </div>
 
-                <h4>What do I do with this package?</h4>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="description">Description</label>
+            <div class="col-md-4">
+              <input id="description" name="description" type="text" placeholder="A small DM map for 4-6 players"
+                     class="form-control input-md" required="">
 
-                <p>A pk3 is a renamed zip file, you should extract this to a folder name "my_map.pk3dir" in your ~/.xonotic/data folder and open the .map in NetRadiant. When you're ready to test, compile the map (this will create the .bsp) which you can play in game.</p>
+            </div>
+          </div>
 
-                <form class="form-horizontal">
-                <fieldset>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="author">Author</label>
+            <div class="col-md-4">
+              <input id="author" name="author" type="text" placeholder="-z-" class="form-control input-md" required="">
 
-                <legend>Package Generator</legend>
+            </div>
+          </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="bsp">Name (bsp)</label>  
-                  <div class="col-md-4">
-                  <input id="bsp" name="bsp" type="text" placeholder="my_map_v1" class="form-control input-md" required="" pattern="^[a-z0-9_-]+$">
-                  <span class="help-block">lowercase characters a-z, 0-9, _ and -</span>  
-                  </div>
-                </div>
+          <!-- Multiple Checkboxes (inline) -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="gametypes">Game Types</label>
+            <div class="col-md-4" id="gametypes">
+              <label class="checkbox-inline" for="gametypes-0">
+                <input type="checkbox" name="gametypes" id="gametypes-0" value="dm" checked="checked">
+                dm
+              </label>
+              <label class="checkbox-inline" for="gametypes-1">
+                <input type="checkbox" name="gametypes" id="gametypes-1" value="ft">
+                ft
+              </label>
+              <label class="checkbox-inline" for="gametypes-2">
+                <input type="checkbox" name="gametypes" id="gametypes-2" value="ka">
+                ka
+              </label>
+              <label class="checkbox-inline" for="gametypes-3">
+                <input type="checkbox" name="gametypes" id="gametypes-3" value="kh">
+                kh
+              </label>
+              <label class="checkbox-inline" for="gametypes-4">
+                <input type="checkbox" name="gametypes" id="gametypes-4" value="ctf">
+                ctf
+              </label>
+            </div>
+          </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="title">Title</label>  
-                  <div class="col-md-4">
-                  <input id="title" name="title" type="text" placeholder="My Map" class="form-control input-md" required="">
-                    
-                  </div>
-                </div>
+          <!-- Select Basic -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="license">License</label>
+            <div class="col-md-4">
+              <select id="license" name="license" class="form-control">
+                <option value="gpl-2.0.txt">GPL 2.0</option>
+                <option value="gpl-3.0.txt">GPL 3.0</option>
+                <option value="mit.txt">MIT</option>
+                <option value="blank.txt">Other</option>
+              </select>
+            </div>
+          </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="description">Description</label>  
-                  <div class="col-md-4">
-                  <input id="description" name="description" type="text" placeholder="A small DM map for 4-6 players" class="form-control input-md" required="">
-                    
-                  </div>
-                </div>
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="generate"></label>
+            <div class="col-md-4">
+              <button id="generate" name="generate" class="btn btn-primary">Generate my pk3!</button>
+            </div>
+          </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="author">Author</label>  
-                  <div class="col-md-4">
-                  <input id="author" name="author" type="text" placeholder="-z-" class="form-control input-md" required="">
-                    
-                  </div>
-                </div>
-
-                <!-- Multiple Checkboxes (inline) -->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="gametypes">Game Types</label>
-                  <div class="col-md-4">
-                    <label class="checkbox-inline" for="gametypes-0">
-                      <input type="checkbox" name="gametypes" id="gametypes-0" value="dm" checked="checked">
-                      dm
-                    </label>
-                    <label class="checkbox-inline" for="gametypes-1">
-                      <input type="checkbox" name="gametypes" id="gametypes-1" value="ft">
-                      ft
-                    </label>
-                    <label class="checkbox-inline" for="gametypes-2">
-                      <input type="checkbox" name="gametypes" id="gametypes-2" value="ka">
-                      ka
-                    </label>
-                    <label class="checkbox-inline" for="gametypes-3">
-                      <input type="checkbox" name="gametypes" id="gametypes-3" value="kh">
-                      kh
-                    </label>
-                    <label class="checkbox-inline" for="gametypes-4">
-                      <input type="checkbox" name="gametypes" id="gametypes-4" value="ctf">
-                      ctf
-                    </label>
-                  </div>
-                </div>
-
-                <!-- Select Basic -->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="license">License</label>
-                  <div class="col-md-4">
-                    <select id="license" name="license" class="form-control">
-                      <option value="gpl-2.0.txt">GPL 2.0</option>
-                      <option value="gpl-3.0.txt">GPL 3.0</option>
-                      <option value="mit.txt">MIT</option>
-                      <option value="blank.txt">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- Button -->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="generate"></label>
-                  <div class="col-md-4">
-                    <button id="generate" name="generate" class="btn btn-primary">Generate my pk3!</button>
-                  </div>
-                </div>
-
-                </fieldset>
-                </form>
+        </fieldset>
+      </form>
 
 
-            </div><!-- .panel-body -->
-        </div><!-- .panel -->
+    </div><!-- .panel-body -->
+  </div><!-- .panel -->
 
-    </section>
+</section>
 
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="vendor/bootstrap-validator/validator.min.js"></script>
-    <script type="text/javascript" src="vendor/jszip/jszip.min.js"></script>
-    <script type="text/javascript" src="vendor/jszip-utils/jszip-utils.min.js"></script>
-    <script type="text/javascript" src="vendor/FileSaver/FileSaver.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="vendor/bootstrap-validator/validator.min.js"></script>
+<script type="text/javascript" src="vendor/jszip/jszip.min.js"></script>
+<script type="text/javascript" src="vendor/jszip-utils/jszip-utils.min.js"></script>
+<script type="text/javascript" src="vendor/FileSaver/FileSaver.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
 
-  </body>
+</body>
 </html>
 
 
