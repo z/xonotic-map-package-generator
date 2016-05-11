@@ -64,10 +64,10 @@ $(document).ready(function () {
         saveAs(content, bsp + ".pk3");
 
       });
+      
+      evt.preventDefault();
 
     }); // validator
-
-    evt.preventDefault();
 
   }); // generator click
 
