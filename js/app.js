@@ -1,10 +1,9 @@
 $(document).ready(function () {
 
-  $("#generate").click(function (e) {
+  $("#generate").click(function (evt) {
 
     $('form').validator().on('submit', function (e) {
       if (e.isDefaultPrevented()) {
-        console.log('default prevented');
         return;
       }
 
@@ -63,6 +62,8 @@ $(document).ready(function () {
         var content = zip.generate({type: "blob"});
         // see FileSaver.js
         saveAs(content, bsp + ".pk3");
+
+        e.preventDefault();
 
       });
 
