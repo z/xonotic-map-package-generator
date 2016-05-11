@@ -20,14 +20,14 @@
 </head>
 <body>
 
-<section class="container-fluid">
+<section class="container">
 
   <div class="page-header">
     <h1 class="text-primary">Xonotic Map Package Generator</h1>
     <h3 class="text-muted">Learn how to create a well-packaged map</h3>
   </div>
 
-  <div class="panel panel-default col-md-6">
+  <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Package Creation</h3>
     </div>
@@ -52,8 +52,8 @@
 
           <!-- Text input-->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="bsp">Name (bsp)</label>
-            <div class="col-md-4">
+            <label class="col-xs-4 control-label" for="bsp">Name (bsp)</label>
+            <div class="col-lg-5 col-md-6 col-xs-7">
               <input id="bsp" name="bsp" type="text" placeholder="my_map_v1" class="form-control input-md" required=""
                      pattern="^[a-z0-9_-]+$">
               <span class="help-block">lowercase characters a-z, 0-9, _ and -</span>
@@ -62,8 +62,8 @@
 
           <!-- Text input-->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="title">Title</label>
-            <div class="col-md-4">
+            <label class="col-xs-4 control-label" for="title">Title</label>
+            <div class="col-lg-5 col-md-6 col-xs-7">
               <input id="title" name="title" type="text" placeholder="My Map" class="form-control input-md" required="">
 
             </div>
@@ -71,8 +71,8 @@
 
           <!-- Text input-->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="description">Description</label>
-            <div class="col-md-4">
+            <label class="col-xs-4 control-label" for="description">Description</label>
+            <div class="col-lg-5 col-md-6 col-xs-7">
               <input id="description" name="description" type="text" placeholder="A small DM map for 4-6 players"
                      class="form-control input-md" required="">
 
@@ -81,8 +81,8 @@
 
           <!-- Text input-->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="author">Author</label>
-            <div class="col-md-4">
+            <label class="col-xs-4 control-label" for="author">Author</label>
+            <div class="col-lg-5 col-md-6 col-xs-7">
               <input id="author" name="author" type="text" placeholder="-z-" class="form-control input-md" required="">
 
             </div>
@@ -90,8 +90,8 @@
 
           <!-- Multiple Checkboxes (inline) -->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="gametypes">Game Types</label>
-            <div class="col-md-4" id="gametypes">
+            <label class="col-xs-4 control-label" for="gametypes">Game Types</label>
+            <div class="col-xs-4" id="gametypes">
               <label class="checkbox-inline" for="gametypes-0">
                 <input type="checkbox" name="gametypes" id="gametypes-0" value="dm" checked="checked">
                 dm
@@ -117,8 +117,8 @@
 
           <!-- Select Basic -->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="license">License</label>
-            <div class="col-md-4">
+            <label class="col-xs-4 control-label" for="license">License</label>
+            <div class="col-lg-5 col-md-6 col-xs-7">
               <select id="license" name="license" class="form-control">
                 <option value="gpl-2.0.txt">GPL 2.0</option>
                 <option value="gpl-3.0.txt">GPL 3.0</option>
@@ -130,8 +130,8 @@
 
           <!-- Button -->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="generate"></label>
-            <div class="col-md-4">
+            <label class="col-xs-4 control-label" for="generate"></label>
+            <div class="col-lg-5 col-md-6 col-xs-7">
               <button id="generate" name="generate" class="btn btn-primary">Generate my pk3!</button>
             </div>
           </div>

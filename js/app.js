@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     $('form').validator().on('submit', function (e) {
       if (e.isDefaultPrevented()) {
+        console.log('default prevented');
         return;
       }
 
