@@ -63,11 +63,11 @@ $(document).ready(function () {
         // see FileSaver.js
         saveAs(content, bsp + ".pk3");
 
-        e.preventDefault();
-
       });
 
     }); // validator
+
+    e.preventDefault();
 
   }); // generator click
 
